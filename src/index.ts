@@ -26,11 +26,6 @@ async function run() {
   const issue = ctx.issue;
   const pipeline = process.env.HEROKU_PIPELINE_ID;
 
-  if (fork) {
-    core.info("PRs from forked repos can't trigger this action");
-    return;
-  }
-
   core.debug("connecting to heroku");
   let heroku: Heroku | undefined;
 

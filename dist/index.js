@@ -9156,10 +9156,6 @@ function run() {
         const action = core.getInput("action");
         const issue = ctx.issue;
         const pipeline = process.env.HEROKU_PIPELINE_ID;
-        if (fork) {
-            core.info("PRs from forked repos can't trigger this action");
-            return;
-        }
         core.debug("connecting to heroku");
         let heroku;
         try {
@@ -9272,7 +9268,7 @@ module.exports = eval("require")("encoding");
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["heroku-client@3.1.0","/home/ariel/dev/ombulabs/project/manage-heroku-review-app"]],"_from":"heroku-client@3.1.0","_id":"heroku-client@3.1.0","_inBundle":false,"_integrity":"sha512-UfGKwUm5duzzSVI8uUXlNAE1mus6uPxmZPji4vuG1ArV5DYL1rXsZShp0OoxraWdEwYoxCUrM6KGztC68x5EZQ==","_location":"/heroku-client","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"heroku-client@3.1.0","name":"heroku-client","escapedName":"heroku-client","rawSpec":"3.1.0","saveSpec":null,"fetchSpec":"3.1.0"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/heroku-client/-/heroku-client-3.1.0.tgz","_spec":"3.1.0","_where":"/home/ariel/dev/ombulabs/project/manage-heroku-review-app","author":{"name":"Jeff Dickey"},"bugs":{"url":"https://github.com/heroku/node-heroku-client/issues"},"contributors":[{"name":"Jonathan Clem"},{"name":"Jeff Dickey"},{"name":"Ray McDermott"},{"name":"Bob Zoller"},{"name":"Sehrope Sarkuni"}],"dependencies":{"is-retry-allowed":"^1.0.0","tunnel-agent":"^0.6.0"},"description":"A wrapper for the Heroku v3 API","devDependencies":{"ava":"^0.18.0","debug":"^3.1.0","nock":"^11.7.0","nyc":"^11.3.0","standard":"^10.0.3","stdout-stderr":"^0.1.9"},"engines":{"node":">=6.0.0"},"files":["lib"],"homepage":"https://github.com/heroku/node-heroku-client#readme","keywords":["heroku"],"license":"MIT","main":"lib/index.js","name":"heroku-client","repository":{"type":"git","url":"git+https://github.com/heroku/node-heroku-client.git"},"scripts":{"test":"nyc ava && standard"},"version":"3.1.0"}');
+module.exports = JSON.parse('{"name":"heroku-client","description":"A wrapper for the Heroku v3 API","version":"3.1.0","author":"Jeff Dickey","bugs":{"url":"https://github.com/heroku/node-heroku-client/issues"},"contributors":["Jonathan Clem","Jeff Dickey","Ray McDermott","Bob Zoller","Sehrope Sarkuni"],"dependencies":{"is-retry-allowed":"^1.0.0","tunnel-agent":"^0.6.0"},"devDependencies":{"ava":"^0.18.0","debug":"^3.1.0","nock":"^11.7.0","nyc":"^11.3.0","standard":"^10.0.3","stdout-stderr":"^0.1.9"},"engines":{"node":">=6.0.0"},"files":["lib"],"keywords":["heroku"],"license":"MIT","main":"lib/index.js","repository":{"type":"git","url":"https://github.com/heroku/node-heroku-client"},"scripts":{"test":"nyc ava && standard"}}');
 
 /***/ }),
 
