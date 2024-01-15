@@ -18,7 +18,6 @@ async function run() {
 
   const ctx = github.context;
   const pr = ctx.payload.pull_request!;
-  const fork = pr.head.repo.fork;
   const branch = pr.head.ref;
   const version = pr.head.sha;
   const pr_number = pr.number;
