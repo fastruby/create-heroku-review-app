@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: fastruby/manage-heroku-review-app@v1.2
+      - uses: fastruby/manage-heroku-review-app@v1.3
         with:
           action: create
         env:
@@ -42,7 +42,7 @@ on:
 jobs:
   destroy-review-app:
     steps:
-      - uses: fastruby/manage-heroku-review-app@v1.2
+      - uses: fastruby/manage-heroku-review-app@v1.3
         with:
           action: destroy
         env:
