@@ -52,6 +52,34 @@ jobs:
 
 > Note GITHUB_TOKEN is not needed for the `destroy` action
 
+### Custom Environment Variables
+
+You can pass custom environment variables to the Heroku Review App by using the custom-env-vars input in your workflow file. This allows you to set specific environment variables for your review app, which can be useful for testing different configurations.
+
+```yml
+name: Review App with Custom Variables
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+  create-review-app:
+    if: ${{ github.event.label.name == 'create-review-app' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: fastruby/manage-heroku-review-app@v1.3
+        with:
+          action: create
+          custom-env-vars: |
+            API_URL=https://staging.api.example.com
+            FEATURE_FLAG=true
+        env:
+          HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
+          HEROKU_PIPELINE_ID: ${{ secrets.HEROKU_PIPELINE_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
 # Configuration
 
 ## Inputs:
@@ -60,6 +88,7 @@ jobs:
 
 - `create` will trigger a Review App creation for the current PR, will fail if the Review App already exists
 - `destroy` will trigger a Review App destroy for the current PR, if any
+- `custom-env-vars` (optional) This input allows you to define environment variables to be passed to the Review App. The format should be a multiline string where each line represents a variable (VAR_NAME=value).
 
 > Review Apps will be re-deployed automatically after a new push, there's no need to trigger any action
 
