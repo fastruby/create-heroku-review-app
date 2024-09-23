@@ -5,6 +5,10 @@ inputs:
     description: 'One of: "create" or "destroy"'
     required: true
     default: "create"
+  custom-env-vars:
+    description: "Optional environment variables for the Heroku Review App (format: VAR1=value1 VAR2=value2)"
+    required: false
+    default: ""
 runs:
   using: "node12"
   main: "dist/index.js"
