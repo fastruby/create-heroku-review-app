@@ -7,7 +7,7 @@
     "url": "https://github.com/fastruby/manage-heroku-review-app"
   },
   "scripts": {
-    "prepare": "ncc build src/index.ts -o dist --source-map --license licenses.txt"
+    "prepare": "NODE_OPTIONS=--openssl-legacy-provider ncc build src/index.ts -o dist --source-map --license licenses.txt"
   },
   "dependencies": {
     "@actions/core": "^1.6.0",
