@@ -60,6 +60,24 @@ async function run() {
     }
   };
 
+
+  const parseCustomVariables = (): Record<string, string> => {
+    const customVarsInput = core.getInput("custom-env-vars");
+    const customVars: Record<string, string> = {};
+
+    if (customVarsInput) {
+      const lines = customVarsInput.split("\n");
+      lines.forEach((line) => {
+        const [key, value] = line.split("=");
+        if (key && value) {
+          customVars[key.trim()] = value.trim();
+        }
+      });
+    }
+
+    return customVars;
+  };
+
   const createReviewApp = async () => {
     core.debug("init octokit");
     if (!process.env.GITHUB_TOKEN) {
@@ -86,6 +104,9 @@ async function run() {
       });
 
     try {
+
+      const customVars = parseCustomVariables(); // Parse the custom variables
+
       core.info("Creating Review App");
       core.debug(
         JSON.stringify({
@@ -95,7 +116,8 @@ async function run() {
             url,
             version,
           },
-          pr_number,
+          pr_number, 
+          customVars
         })
       );
       const response = await heroku!.post("/review-apps", {
@@ -107,6 +129,7 @@ async function run() {
             version,
           },
           pr_number,
+          environment: customVars,
         },
       });
       core.debug(response);
